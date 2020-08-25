@@ -1,18 +1,74 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
   <title>Rock Paper Scissors</title>
 
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
 </head>
 
 <body>
   <script>
+
+    let computerSelection;
+
+    function computerPlay() {
+      let options = ["rock", "paper", "scissors"];
+      computerSelection = options[Math.floor(Math.random() * options.length)];
+      return computerSelection;
+    }
+
+    let playerSelection = 'rock';
+    let computerWins = 0;
+    let playerWins =0;
+
+    function playRound(playerSelection, computerSelection) {
+      if ((playerSelection == 'rock' && computerSelection == 'rock') || (playerSelection == 'paper' && computerSelection == 'paper') || (playerSelection == 'scissors' && computerSelection == 'scissors')) {
+        console.log('You tie');
+      }
+      if ((playerSelection = 'rock' && computerSelection == 'paper') || (playerSelection == 'paper' && computerSelection == 'scissors') || (playerSelection == 'scissors' && computerSelection == 'rock')) {
+        console.log('you lose');
+        computerWins++;
+      }
+      if ((playerSelection = 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')) {
+        console.log('you win!');
+        playerWins++;
+      }
+    }
+
+    function game() {
+      let rounds = 5;
+
+      while (rounds != 0) {
+
+        let computerSelection;
+        console.log(rounds + " rounds left");
+        computerSelection = computerPlay();
+        playerSelection = prompt("choose rock, paper, scissors(not capitalized)")
+        playRound(playerSelection, computerSelection);
+        rounds--;
+        console.log("Current Player wins: " + playerWins);
+        console.log("Current Computer wins: " + computerWins);
+      }
+      console.log("Game COMPLETE");
+
+
+      console.log("Player wins: " + playerWins);
+      console.log("Computer wins: " + computerWins);
+      if (playerWins > computerWins) {
+        console.log("You win the game!!");
+      } else {
+        console.log("you loser!!");
+      }
+    }
+
+    console.log(game());
+
+
   </script>
 </body>
+
 </html>
